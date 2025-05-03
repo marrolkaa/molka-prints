@@ -1,0 +1,63 @@
+package com.example.myapplication.ui.cart;
+
+import android.os.Bundle;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.myapplication.CartManager;
+import com.example.myapplication.Product;
+import com.example.myapplication.R;
+
+import java.util.List;
+
+public class CartActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_cart);
+
+        LinearLayout cartLayout = findViewById(R.id.cartItemList);
+        TextView totalTextView = findViewById(R.id.totalTextView);  // Find the total TextView
+
+        List<Product> cartItems = CartManager.getCartItems();
+        double total = 0.0;
+
+        for (Product product : cartItems) {
+            LinearLayout itemLayout = new LinearLayout(this);
+            itemLayout.setOrientation(LinearLayout.VERTICAL);
+            itemLayout.setPadding(16, 16, 16, 16);
+
+            ImageView imageView = new ImageView(this);
+            imageView.setImageResource(product.getImageResId());
+            imageView.setLayoutParams(new LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.MATCH_PARENT, 500));
+
+            TextView nameView = new TextView(this);
+            nameView.setText(product.getTitle());
+            nameView.setTextSize(20);
+
+            TextView priceView = new TextView(this);
+            priceView.setText("Prix : " + product.getPrice());
+
+            TextView descView = new TextView(this);
+            descView.setText(product.getDescription());
+
+            itemLayout.addView(imageView);
+            itemLayout.addView(nameView);
+            itemLayout.addView(priceView);
+            itemLayout.addView(descView);
+
+            cartLayout.addView(itemLayout);
+
+            // Accumulate the total price
+            total += Double.parseDouble(product.getPrice().replace("dt", "").trim());
+        }
+
+        // Update the total price in the totalTextView
+        totalTextView.setText("Total: " + total + " dt");
+    }
+}

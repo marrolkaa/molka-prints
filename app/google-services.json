@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "245334806002",
+    "project_id": "molkadata",
+    "storage_bucket": "molkadata.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:245334806002:android:8094001752238f583daf6b",
+        "android_client_info": {
+          "package_name": "com.example.myapplication"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCOy3lgnyIZfTVPNgqQuGszuQhhHm2_qFU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

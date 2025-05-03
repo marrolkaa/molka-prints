@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F2FFFFFF"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:padding="24dp">
+
+    <!-- Logo -->
+    <ImageView
+        android:id="@+id/signupLogo"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginBottom="16dp"
+        android:contentDescription="Logo de Molka Prints"
+        android:src="@drawable/logo" />
+
+    <!-- Titre -->
+
+    <!-- Nom -->
+    <EditText
+        android:id="@+id/nameInput"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="12dp"
+        android:backgroundTint="#E2D5688D"
+        android:hint="Nom complet"
+        android:textColorHint="@color/black"/>
+
+    <!-- Email -->
+    <EditText
+        android:id="@+id/emailInput"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="12dp"
+        android:backgroundTint="#E2D5688D"
+        android:hint="Email"
+        android:inputType="textEmailAddress"
+        android:textColorHint="@color/black"/>
+
+    <!-- Téléphone -->
+    <EditText
+        android:id="@+id/phoneInput"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="12dp"
+        android:backgroundTint="#E2D5688D"
+        android:hint="Phone number"
+        android:inputType="phone"
+        android:textColorHint="@color/black"/>
+
+    <!-- Adresse -->
+    <EditText
+        android:id="@+id/addressInput"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="12dp"
+        android:backgroundTint="#E2D5688D"
+        android:hint="Location"
+        android:inputType="textPostalAddress"
+        android:textColorHint="@color/black"/>
+
+    <!-- Mot de passe -->
+    <EditText
+        android:id="@+id/passwordInput"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="12dp"
+        android:backgroundTint="#E2D5688D"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:textColorHint="@color/black"/>
+
+    <!-- Genre -->
+    <RadioGroup
+        android:id="@+id/genreGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/radioFemme"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
+            android:text="Female" />
+
+        <RadioButton
+            android:id="@+id/radioHomme"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:textColor="@android:color/black"
+            android:text="Male" />
+    </RadioGroup>
+
+    <!-- Bouton inscription -->
+    <Button
+        android:id="@+id/btnSignup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="#E2D5688D"
+        android:text="Sign up"
+        android:textColor="@android:color/white" />
+
+    <!-- Lien vers la connexion -->
+    <TextView
+        android:id="@+id/lienConnexion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Already have an account? Login"
+        android:textColor="@android:color/holo_purple"
+        android:textSize="14sp"
+        android:clickable="true"
+        android:focusable="true" />
+
+
+</LinearLayout>
