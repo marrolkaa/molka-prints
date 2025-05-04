@@ -2,6 +2,7 @@ package com.example.myapplication.ui.product;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
@@ -21,6 +22,7 @@ import androidx.core.content.ContextCompat;
 import com.example.myapplication.CartManager;
 import com.example.myapplication.Product;
 import com.example.myapplication.R;
+import com.example.myapplication.ui.cart.CartActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -61,7 +63,7 @@ public class Mug extends AppCompatActivity {
 
         // Product data
         List<Product> products = new ArrayList<>();
-        products.add(new Product(R.drawable.mu1, "20dt", "", "", "", 0, true));
+        products.add(new Product(R.drawable.mu1, "20dt", "coffee girlie mug", "coffee girlie mug", "", 0, true));
         products.add(new Product(R.drawable.mu2, "20dt", "Sticker B", "Heart Sticker", "Stickers", 4.0f, true));
         products.add(new Product(R.drawable.mu4, "20dt", "Sticker C", "Animal Sticker", "Stickers", 4.2f, false));
         products.add(new Product(R.drawable.mu5, "20dt", "Sticker D", "Floral Sticker", "Stickers", 4.5f, true));
@@ -85,20 +87,31 @@ public class Mug extends AppCompatActivity {
                         intent = new Intent(Mug.this, Flower.class);
                         break;
                     case "mug":
-                        intent = new Intent(Mug.this, Mug.class);
-                        break;
+                        Toast.makeText(Mug.this, "you are already in the mugs page ! : " + query, Toast.LENGTH_SHORT).show();
+                        return true; // avoid proceeding to startActivity
                     case "posters":
+                    case "poster":
+                        intent = new Intent(Mug.this, Posters.class);
+                        break;
                     case "note books":
                         intent = new Intent(Mug.this, Notebook.class);
                         break;
+                    case "sticky notes":
+                        startActivity(new Intent(Mug.this, Stickynotes.class));
+                        return true;
                     case "daily planner":
                         intent = new Intent(Mug.this, Dailyplanner.class);
                         break;
                     default:
-                        Toast.makeText(Mug.this, "Aucun produit trouvé pour : " + query, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Mug.this, "no product called by  : " + query, Toast.LENGTH_SHORT).show();
                         return true;
                 }
-                startActivity(intent);
+
+                if (intent != null) {
+                    startActivity(intent);
+                }
+
+
                 return true;
             }
 
@@ -106,6 +119,12 @@ public class Mug extends AppCompatActivity {
             public boolean onQueryTextChange(String newText) {
                 return false;
             }
+        });
+        // 🛒 Vers panier
+        ImageView cartImage = findViewById(R.id.cartImageView);
+        cartImage.setOnClickListener(v -> {
+            Intent intent = new Intent(Mug.this, CartActivity.class);
+            startActivity(intent);
         });
 
         // Display products with "Ajouter au panier" button
@@ -126,15 +145,19 @@ public class Mug extends AppCompatActivity {
             titleView.setTextSize(18);
 
             TextView priceView = new TextView(this);
-            priceView.setText("Prix : " + product.getPrice());
+            priceView.setText("Price : " + product.getPrice());
 
             Button addToCartButton = new Button(this);
-            addToCartButton.setText("Ajouter au panier");
+            addToCartButton.setText("ADD TO CART");
+            addToCartButton.setBackgroundColor(ContextCompat.getColor(this, R.color.pink));
+            addToCartButton.setTextColor(Color.WHITE); // Pour que le texte soit bien visible
             addToCartButton.setOnClickListener(v -> {
                 CartManager.addToCart(product);
-                Toast.makeText(Mug.this, product.getTitle() + " ajouté au panier", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Mug.this, product.getTitle() + " ADDED TO CART", Toast.LENGTH_SHORT).show();
             });
             productItem.addView(imageView);
+            productItem.addView(titleView);
+            productItem.addView(priceView);
             productItem.addView(addToCartButton);
             productListLayout.addView(productItem);
         }

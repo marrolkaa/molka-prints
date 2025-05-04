@@ -1,6 +1,8 @@
 package com.example.myapplication.ui.cart;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -15,14 +17,22 @@ import java.util.List;
 
 public class CartActivity extends AppCompatActivity {
 
+    private LinearLayout cartLayout;
+    private TextView totalTextView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cart);
 
-        LinearLayout cartLayout = findViewById(R.id.cartItemList);
-        TextView totalTextView = findViewById(R.id.totalTextView);  // Find the total TextView
+        cartLayout = findViewById(R.id.cartItemList);
+        totalTextView = findViewById(R.id.totalTextView);
 
+        displayCartItems();
+    }
+
+    private void displayCartItems() {
+        cartLayout.removeAllViews(); // Clear old views
         List<Product> cartItems = CartManager.getCartItems();
         double total = 0.0;
 
@@ -46,18 +56,24 @@ public class CartActivity extends AppCompatActivity {
             TextView descView = new TextView(this);
             descView.setText(product.getDescription());
 
+            Button deleteButton = new Button(this);
+            deleteButton.setText("Supprimer");
+            deleteButton.setOnClickListener(v -> {
+                CartManager.removeFromCart(product); // Remove from list
+                displayCartItems(); // Refresh layout and total
+            });
+
             itemLayout.addView(imageView);
             itemLayout.addView(nameView);
             itemLayout.addView(priceView);
             itemLayout.addView(descView);
+            itemLayout.addView(deleteButton);
 
             cartLayout.addView(itemLayout);
 
-            // Accumulate the total price
             total += Double.parseDouble(product.getPrice().replace("dt", "").trim());
         }
 
-        // Update the total price in the totalTextView
         totalTextView.setText("Total: " + total + " dt");
     }
 }

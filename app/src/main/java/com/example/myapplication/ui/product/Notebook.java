@@ -15,6 +15,7 @@ import androidx.core.content.ContextCompat;
 import com.example.myapplication.CartManager;
 import com.example.myapplication.Product;
 import com.example.myapplication.R;
+import com.example.myapplication.databinding.ActivityMug2Binding;
 import com.example.myapplication.ui.cart.CartActivity;
 
 import java.util.ArrayList;
@@ -38,17 +39,17 @@ public class Notebook extends AppCompatActivity {
         LinearLayout productListLayout = findViewById(R.id.productListLayout);
 
         List<Product> products = new ArrayList<>();
-        products.add(new Product(R.drawable.m1, "20dt", "A beautiful custom notebook.", "Custom Notebook", "Stationery", 4.5f, true));
-        products.add(new Product(R.drawable.m2, "50dt", "A stylish planner.", "Stylish Planner", "Stationery", 4.0f, true));
-        products.add(new Product(R.drawable.m3, "23dt", "A compact diary.", "Compact Diary", "Stationery", 4.2f, false));
-        products.add(new Product(R.drawable.m4, "30dt", "A beautiful custom notebook.", "Custom Notebook", "Stationery", 4.5f, true));
-        products.add(new Product(R.drawable.m6, "23dt", "A compact diary.", "Compact Diary", "Stationery", 4.2f, false));
+        products.add(new Product(R.drawable.m1, "20dt",                     "A beautiful custom notebook.", "Custom Notebook", "Stationery", 4.5f, true));
+        products.add(new Product(R.drawable.m2, "50dt", "A quran journal.", " quran journal", "Stationery", 4.0f, true));
+        products.add(new Product(R.drawable.m3, "23dt", "A diary.", " Diary", "Stationery", 4.2f, false));
+        products.add(new Product(R.drawable.m4, "30dt", "our memories book.", "memories note book", "Stationery", 4.5f, true));
+        products.add(new Product(R.drawable.m6, "23dt", "nail artist note book.", "nail artist note book.", "Stationery", 4.2f, false));
         products.add(new Product(R.drawable.m7, "24dt", "A beautiful custom notebook.", "Custom Notebook", "Stationery", 4.5f, true));
-        products.add(new Product(R.drawable.m8, "28.5dt","A stylish planner.", "Stylish Planner", "Stationery", 4.0f, true));
-        products.add(new Product(R.drawable.m9, "34dt", "A compact diary.", "Compact Diary", "Stationery", 4.2f, false));
-        products.add(new Product(R.drawable.m10, "10dt", "A beautiful custom notebook.", "Custom Notebook", "Stationery", 4.5f, true));
-        products.add(new Product(R.drawable.m11, "40dt", "A stylish planner.", "Stylish Planner", "Stationery", 4.0f, true));
-        products.add(new Product(R.drawable.m12, "41dt", "A compact diary.", "Compact Diary", "Stationery", 4.2f, false));
+        products.add(new Product(R.drawable.m8, "28.5dt","wedding planner.", "wedding Planner", "Stationery", 4.0f, true));
+        products.add(new Product(R.drawable.m9, "34dt", "A small note book .", "A small note book ", "Stationery", 4.2f, false));
+        products.add(new Product(R.drawable.m10, "10dt", "my planner.", "my planner", "Stationery", 4.5f, true));
+        products.add(new Product(R.drawable.m11, "40dt", "A goals planner.", "Stylish Planner", "Stationery", 4.0f, true));
+        products.add(new Product(R.drawable.m12, "41dt", " diary.", "Compact Diary", "Stationery", 4.2f, false));
 
         // 🔍 Recherche
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -69,14 +70,17 @@ public class Notebook extends AppCompatActivity {
                     case "poster":
                         startActivity(new Intent(Notebook.this, Posters.class));
                         break;
+                    case "sticky notes":
+                        startActivity(new Intent(Notebook.this, Stickynotes.class));
+                        break;
                     case "note books":
-                        startActivity(new Intent(Notebook.this, Notebook.class));
+                        Toast.makeText(Notebook.this, " you are already in the note  books page : " + query, Toast.LENGTH_SHORT).show();
                         break;
                     case "daily planner":
                         startActivity(new Intent(Notebook.this, Dailyplanner.class));
                         break;
                     default:
-                        Toast.makeText(Notebook.this, "Aucun produit trouvé pour : " + query, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Notebook.this, "no product called by  : " + query, Toast.LENGTH_SHORT).show();
                         break;
                 }
                 return true;
@@ -107,19 +111,26 @@ public class Notebook extends AppCompatActivity {
                     800));
             imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
             imageView.setImageResource(product.getImageResId());
+            imageView.setOnClickListener(v -> {
+                Intent intent = new Intent(Notebook.this, ProductDetailActivity.class);
+                intent.putExtra("product", product); // Serializable
+                startActivity(intent);
+            });
 
             TextView titleView = new TextView(this);
             titleView.setText(product.getTitle());
             titleView.setTextSize(18);
 
             TextView priceView = new TextView(this);
-            priceView.setText("Prix : " + product.getPrice());
+            priceView.setText("Price : " + product.getPrice());
 
             Button addToCartButton = new Button(this);
-            addToCartButton.setText("Ajouter au panier");
+            addToCartButton.setText("ADD TO CART");
+            addToCartButton.setBackgroundColor(ContextCompat.getColor(this, R.color.pink));
+            addToCartButton.setTextColor(Color.WHITE); // Pour que le texte soit bien visible
             addToCartButton.setOnClickListener(v -> {
                 CartManager.addToCart(product);
-                Toast.makeText(Notebook.this, product.getTitle() + " ajouté au panier", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Notebook.this, product.getTitle() + " ADDED TO CART", Toast.LENGTH_SHORT).show();
             });
             productItem.addView(imageView);
             productItem.addView(titleView);

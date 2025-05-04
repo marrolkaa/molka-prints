@@ -7,7 +7,7 @@ public class User {
     private String phone;
     private String password;
 
-    public User() {
+    public User(String nom, String email, String phone, String password) {
         // Constructeur vide requis pour Firebase
     }
 
