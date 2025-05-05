@@ -17,7 +17,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.core.content.ContextCompat;
 
-import com.example.myapplication.Product;
+import com.example.myapplication.Produit;
 import com.example.myapplication.R;
 
 
@@ -62,16 +62,17 @@ public class Stickynotes extends AppCompatActivity {
         infoText.startAnimation(animationSet);
 
         // Product data
-        List<Product> products = new ArrayList<>();
-        products.add(new Product(R.drawable.st1, "1dt", "Sticker A", "Cute Star Sticker", "Stickers", 4.5f, true));
-        products.add(new Product(R.drawable.st2, "1dt", "Sticker B", "Heart Sticker", "Stickers", 4.0f, true));
-        products.add(new Product(R.drawable.st3, "1dt", "Sticker C", "Animal Sticker", "Stickers", 4.2f, false));
-        products.add(new Product(R.drawable.st4, "1dt", "Sticker D", "Floral Sticker", "Stickers", 4.5f, true));
-        products.add(new Product(R.drawable.st5, "1dt", "Sticker E", "Rainbow Sticker", "Stickers", 4.2f, false));
-        products.add(new Product(R.drawable.st6, "1dt", "Sticker F", "Fruit Sticker", "Stickers", 4.5f, true));
-        products.add(new Product(R.drawable.st7, "1dt", "Sticker G", "Cloud Sticker", "Stickers", 4.0f, true));
-        products.add(new Product(R.drawable.st8, "1dt", "Sticker H", "Coffee Sticker", "Stickers", 4.2f, false));
-        products.add(new Product(R.drawable.st10, "1dt", "Sticker I", "Plant Sticker", "Stickers", 4.5f, true));
+        List<Produit> products = new ArrayList<>();
+        products.add(new Produit("Sticky Note A", "Cute Star Sticky Note", "2dt", R.drawable.st1, "Sticky Notes", 4.5f, true));
+        products.add(new Produit("Sticky Note B", "Heart Sticky Note", "2dt", R.drawable.st2, "Sticky Notes", 4.0f, true));
+        products.add(new Produit("Sticky Note C", "Animal Sticky Note", "2dt", R.drawable.st3, "Sticky Notes", 4.2f, false));
+        products.add(new Produit("Sticky Note D", "Floral Sticky Note", "2dt", R.drawable.st4, "Sticky Notes", 4.5f, true));
+        products.add(new Produit("Sticky Note E", "Rainbow Sticky Note", "2dt", R.drawable.st5, "Sticky Notes", 4.2f, false));
+        products.add(new Produit("Sticky Note F", "Fruit Sticky Note", "2dt", R.drawable.st6, "Sticky Notes", 4.5f, true));
+        products.add(new Produit("Sticky Note G", "Cloud Sticky Note", "2dt", R.drawable.st7, "Sticky Notes", 4.0f, true));
+        products.add(new Produit("Sticky Note H", "Coffee Sticky Note", "2dt", R.drawable.st8, "Sticky Notes", 4.2f, false));
+        products.add(new Produit("Sticky Note I", "Plant Sticky Note", "2dt", R.drawable.st10, "Sticky Notes", 4.5f, true));
+
 
 
         // Search filter
@@ -115,7 +116,7 @@ public class Stickynotes extends AppCompatActivity {
         });
 
         // Display products dynamically
-        for (Product product : products) {
+        for (Produit product : products) {
             LinearLayout productItem = new LinearLayout(this);
             productItem.setOrientation(LinearLayout.VERTICAL);
             productItem.setPadding(16, 16, 16, 16);

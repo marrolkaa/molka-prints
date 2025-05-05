@@ -53,4 +53,8 @@
     </string>
     <string name="button">Button</string>
     <string name="todo">TODO</string>
+    <string name="product_list_desc">Liste des produits</string>
+    <string name="cart_scroll_desc">Liste des articles du panier</string>
+
+
 </resources>

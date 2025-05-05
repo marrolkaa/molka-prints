@@ -19,7 +19,7 @@ import androidx.appcompat.widget.SearchView;
 import androidx.core.content.ContextCompat;
 
 import com.example.myapplication.CartManager;
-import com.example.myapplication.Product;
+import com.example.myapplication.Produit;
 import com.example.myapplication.R;
 import com.example.myapplication.ui.cart.CartActivity;
 
@@ -65,18 +65,18 @@ public class StickersActivity extends AppCompatActivity {
         infoText.startAnimation(animationSet);
 
         // Product data
-        List<Product> products = new ArrayList<>();
-        products.add(new Product(R.drawable.s1, "1dt", "Sticker A", "Cute Star Sticker", "Stickers", 4.5f, true));
-        products.add(new Product(R.drawable.s2, "1dt", "Sticker B", "Heart Sticker", "Stickers", 4.0f, true));
-        products.add(new Product(R.drawable.s3, "1dt", "Sticker C", "Animal Sticker", "Stickers", 4.2f, false));
-        products.add(new Product(R.drawable.s4, "1dt", "Sticker D", "Floral Sticker", "Stickers", 4.5f, true));
-        products.add(new Product(R.drawable.s5, "1dt", "Sticker E", "Rainbow Sticker", "Stickers", 4.2f, false));
-        products.add(new Product(R.drawable.s6, "1dt", "Sticker F", "Fruit Sticker", "Stickers", 4.5f, true));
-        products.add(new Product(R.drawable.s7, "1dt", "Sticker G", "Cloud Sticker", "Stickers", 4.0f, true));
-        products.add(new Product(R.drawable.s8, "1dt", "Sticker H", "Coffee Sticker", "Stickers", 4.2f, false));
-        products.add(new Product(R.drawable.m10, "1dt", "Sticker I", "Plant Sticker", "Stickers", 4.5f, true));
-        products.add(new Product(R.drawable.m11, "1dt", "Sticker J", "Ocean Sticker", "Stickers", 4.0f, true));
-        products.add(new Product(R.drawable.m12, "1dt", "Sticker K", "Book Sticker", "Stickers", 4.2f, false));
+        List<Produit> products = new ArrayList<>();
+        products.add(new Produit("Sticker A", "Cute Star Sticker", "1dt", R.drawable.s1, "Stickers", 4.5f, true));
+        products.add(new Produit("Sticker B", "Heart Sticker", "1dt", R.drawable.s2, "Stickers", 4.0f, true));
+        products.add(new Produit("Sticker C", "Animal Sticker", "1dt", R.drawable.s3, "Stickers", 4.2f, false));
+        products.add(new Produit("Sticker D", "Floral Sticker", "1dt", R.drawable.s4, "Stickers", 4.5f, true));
+        products.add(new Produit("Sticker E", "Rainbow Sticker", "1dt", R.drawable.s5, "Stickers", 4.2f, false));
+        products.add(new Produit("Sticker F", "Fruit Sticker", "1dt", R.drawable.s6, "Stickers", 4.5f, true));
+        products.add(new Produit("Sticker G", "Cloud Sticker", "1dt", R.drawable.s7, "Stickers", 4.0f, true));
+        products.add(new Produit("Sticker H", "Coffee Sticker", "1dt", R.drawable.s8, "Stickers", 4.2f, false));
+        products.add(new Produit("Sticker I", "Plant Sticker", "1dt", R.drawable.m10, "Stickers", 4.5f, true));
+        products.add(new Produit("Sticker J", "Ocean Sticker", "1dt", R.drawable.m11, "Stickers", 4.0f, true));
+        products.add(new Produit("Sticker K", "Book Sticker", "1dt", R.drawable.m12, "Stickers", 4.2f, false));
 
         // Search filter
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -126,7 +126,7 @@ public class StickersActivity extends AppCompatActivity {
         });
 
         // 🛍️ Affichage des produits
-        for (Product product : products) {
+        for (Produit product : products) {
             LinearLayout productItem = new LinearLayout(this);
             productItem.setOrientation(LinearLayout.VERTICAL);
             productItem.setPadding(16, 16, 16, 16);

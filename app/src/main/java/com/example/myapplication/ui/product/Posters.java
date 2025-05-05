@@ -20,7 +20,7 @@ import androidx.appcompat.widget.SearchView;
 import androidx.core.content.ContextCompat;
 
 import com.example.myapplication.CartManager;
-import com.example.myapplication.Product;
+import com.example.myapplication.Produit;
 import com.example.myapplication.R;
 import com.example.myapplication.ui.cart.CartActivity;
 
@@ -66,15 +66,16 @@ public class Posters extends AppCompatActivity {
         infoText.startAnimation(animationSet);
 
         // Product data
-        List<Product> products = new ArrayList<>();
-        products.add(new Product(R.drawable.p3, "3dt", "poster A", "Cute posters", "posters", 4.5f, true));
-        products.add(new Product(R.drawable.p2, "3dt", "Sticker B", "pink poster", "posters", 4.0f, true));
-        products.add(new Product(R.drawable.p4, "3dt", "Sticker C", "flowers poster", "posters", 4.2f, false));
-        products.add(new Product(R.drawable.p5, "3dt", "Sticker D", "cherry poster", "posters", 4.5f, true));
-        products.add(new Product(R.drawable.p6, "3dt", "Sticker E", "pink poster", "posters", 4.2f, false));
-        products.add(new Product(R.drawable.p7, "3dt", "Sticker F", "cherry poster", "posters", 4.5f, true));
-        products.add(new Product(R.drawable.p8, "3dt", "Sticker G", "pink poster", "posters", 4.0f, true));
-        products.add(new Product(R.drawable.p9, "3dt", "Sticker H", "cute poster", "posters", 4.2f, false));
+        List<Produit> products = new ArrayList<>();
+        products.add(new Produit("poster A", "Cute posters", "3dt", R.drawable.p3, "posters", 4.5f, true));
+        products.add(new Produit("Sticker B", "pink poster", "3dt", R.drawable.p2, "posters", 4.0f, true));
+        products.add(new Produit("Sticker C", "flowers poster", "3dt", R.drawable.p4, "posters", 4.2f, false));
+        products.add(new Produit("Sticker D", "cherry poster", "3dt", R.drawable.p5, "posters", 4.5f, true));
+        products.add(new Produit("Sticker E", "pink poster", "3dt", R.drawable.p6, "posters", 4.2f, false));
+        products.add(new Produit("Sticker F", "cherry poster", "3dt", R.drawable.p7, "posters", 4.5f, true));
+        products.add(new Produit("Sticker G", "pink poster", "3dt", R.drawable.p8, "posters", 4.0f, true));
+        products.add(new Produit("Sticker H", "cute poster", "3dt", R.drawable.p9, "posters", 4.2f, false));
+
 
 
         // Search filter
@@ -121,7 +122,7 @@ public class Posters extends AppCompatActivity {
             startActivity(intent);
         });
         // Display products dynamically
-        for (Product product : products) {
+        for (Produit product : products) {
             LinearLayout productItem = new LinearLayout(this);
             productItem.setOrientation(LinearLayout.VERTICAL);
             productItem.setPadding(16, 16, 16, 16);

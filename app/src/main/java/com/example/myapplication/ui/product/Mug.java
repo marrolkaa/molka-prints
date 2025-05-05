@@ -19,7 +19,7 @@ import androidx.appcompat.widget.SearchView;
 import androidx.core.content.ContextCompat;
 
 import com.example.myapplication.CartManager;
-import com.example.myapplication.Product;
+import com.example.myapplication.Produit;
 import com.example.myapplication.R;
 
 import java.util.ArrayList;
@@ -60,16 +60,17 @@ public class Mug extends AppCompatActivity {
         infoText.startAnimation(animationSet);
 
         // Product data
-        List<Product> products = new ArrayList<>();
-        products.add(new Product(R.drawable.mu1, "20dt", "", "", "", 0, true));
-        products.add(new Product(R.drawable.mu2, "20dt", "Sticker B", "Heart Sticker", "Stickers", 4.0f, true));
-        products.add(new Product(R.drawable.mu4, "20dt", "Sticker C", "Animal Sticker", "Stickers", 4.2f, false));
-        products.add(new Product(R.drawable.mu5, "20dt", "Sticker D", "Floral Sticker", "Stickers", 4.5f, true));
-        products.add(new Product(R.drawable.mu6, "20dt", "Sticker E", "Rainbow Sticker", "Stickers", 4.2f, false));
-        products.add(new Product(R.drawable.mu7, "20dt", "Sticker F", "Fruit Sticker", "Stickers", 4.5f, true));
-        products.add(new Product(R.drawable.mu8, "20dt", "Sticker G", "Cloud Sticker", "Stickers", 4.0f, true));
-        products.add(new Product(R.drawable.mu9, "20dt", "Sticker H", "Coffee Sticker", "Stickers", 4.2f, false));
-        products.add(new Product(R.drawable.mu10, "20dt", "Sticker H", "Coffee Sticker", "Stickers", 4.2f, false));
+        List<Produit> products = new ArrayList<>();
+        products.add(new Produit("Mug A", "", "20dt", R.drawable.mu1, "Mugs", 4.0f, true));
+        products.add(new Produit("Mug B", "Heart Sticker", "20dt", R.drawable.mu2, "Mugs", 4.0f, true));
+        products.add(new Produit("Mug C", "Animal Sticker", "20dt", R.drawable.mu4, "Mugs", 4.2f, false));
+        products.add(new Produit("Mug D", "Floral Sticker", "20dt", R.drawable.mu5, "Mugs", 4.5f, true));
+        products.add(new Produit("Mug E", "Rainbow Sticker", "20dt", R.drawable.mu6, "Mugs", 4.2f, false));
+        products.add(new Produit("Mug F", "Fruit Sticker", "20dt", R.drawable.mu7, "Mugs", 4.5f, true));
+        products.add(new Produit("Mug G", "Cloud Sticker", "20dt", R.drawable.mu8, "Mugs", 4.0f, true));
+        products.add(new Produit("Mug H", "Coffee Sticker", "20dt", R.drawable.mu9, "Mugs", 4.2f, false));
+        products.add(new Produit("Mug I", "Coffee Sticker", "20dt", R.drawable.mu10, "Mugs", 4.2f, false));
+
 
         // Search filter
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -109,7 +110,7 @@ public class Mug extends AppCompatActivity {
         });
 
         // Display products with "Ajouter au panier" button
-        for (Product product : products) {
+        for (Produit product : products) {
             LinearLayout productItem = new LinearLayout(this);
             productItem.setOrientation(LinearLayout.VERTICAL);
             productItem.setPadding(16, 16, 16, 16);

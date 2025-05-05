@@ -13,7 +13,7 @@ import androidx.appcompat.widget.SearchView;
 import androidx.core.content.ContextCompat;
 
 import com.example.myapplication.CartManager;
-import com.example.myapplication.Product;
+import com.example.myapplication.Produit;
 import com.example.myapplication.R;
 import com.example.myapplication.ui.cart.CartActivity;
 
@@ -37,18 +37,20 @@ public class Notebook extends AppCompatActivity {
         searchView = findViewById(R.id.searchView);
         LinearLayout productListLayout = findViewById(R.id.productListLayout);
 
-        List<Product> products = new ArrayList<>();
-        products.add(new Product(R.drawable.m1, "20dt", "A beautiful custom notebook.", "Custom Notebook", "Stationery", 4.5f, true));
-        products.add(new Product(R.drawable.m2, "50dt", "A stylish planner.", "Stylish Planner", "Stationery", 4.0f, true));
-        products.add(new Product(R.drawable.m3, "23dt", "A compact diary.", "Compact Diary", "Stationery", 4.2f, false));
-        products.add(new Product(R.drawable.m4, "30dt", "A beautiful custom notebook.", "Custom Notebook", "Stationery", 4.5f, true));
-        products.add(new Product(R.drawable.m6, "23dt", "A compact diary.", "Compact Diary", "Stationery", 4.2f, false));
-        products.add(new Product(R.drawable.m7, "24dt", "A beautiful custom notebook.", "Custom Notebook", "Stationery", 4.5f, true));
-        products.add(new Product(R.drawable.m8, "28.5dt","A stylish planner.", "Stylish Planner", "Stationery", 4.0f, true));
-        products.add(new Product(R.drawable.m9, "34dt", "A compact diary.", "Compact Diary", "Stationery", 4.2f, false));
-        products.add(new Product(R.drawable.m10, "10dt", "A beautiful custom notebook.", "Custom Notebook", "Stationery", 4.5f, true));
-        products.add(new Product(R.drawable.m11, "40dt", "A stylish planner.", "Stylish Planner", "Stationery", 4.0f, true));
-        products.add(new Product(R.drawable.m12, "41dt", "A compact diary.", "Compact Diary", "Stationery", 4.2f, false));
+        List<Produit> products = new ArrayList<>();
+        products.add(new Produit("Custom Notebook", "A beautiful custom notebook.", "20dt", R.drawable.m1, "Stationery", 4.5f, true));
+        products.add(new Produit("Stylish Planner", "A stylish planner.", "50dt", R.drawable.m2, "Stationery", 4.0f, true));
+        products.add(new Produit("Compact Diary", "A compact diary.", "23dt", R.drawable.m3, "Stationery", 4.2f, false));
+        products.add(new Produit("Custom Notebook", "A beautiful custom notebook.", "30dt", R.drawable.m4, "Stationery", 4.5f, true));
+        products.add(new Produit("Compact Diary", "A compact diary.", "23dt", R.drawable.m6, "Stationery", 4.2f, false));
+        products.add(new Produit("Custom Notebook", "A beautiful custom notebook.", "24dt", R.drawable.m7, "Stationery", 4.5f, true));
+        products.add(new Produit("Stylish Planner", "A stylish planner.", "28.5dt", R.drawable.m8, "Stationery", 4.0f, true));
+        products.add(new Produit("Compact Diary", "A compact diary.", "34dt", R.drawable.m9, "Stationery", 4.2f, false));
+        products.add(new Produit("Custom Notebook", "A beautiful custom notebook.", "10dt", R.drawable.m10, "Stationery", 4.5f, true));
+        products.add(new Produit("Stylish Planner", "A stylish planner.", "40dt", R.drawable.m11, "Stationery", 4.0f, true));
+        products.add(new Produit("Compact Diary", "A compact diary.", "41dt", R.drawable.m12, "Stationery", 4.2f, false));
+
+
 
         // 🔍 Recherche
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -96,7 +98,7 @@ public class Notebook extends AppCompatActivity {
         });
 
         // 🛍️ Affichage des produits
-        for (Product product : products) {
+        for (Produit product : products) {
             LinearLayout productItem = new LinearLayout(this);
             productItem.setOrientation(LinearLayout.VERTICAL);
             productItem.setPadding(16, 16, 16, 16);

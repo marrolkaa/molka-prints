@@ -7,18 +7,24 @@ import android.widget.TextView;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.myapplication.Product;
+import com.example.myapplication.Produit;
 import com.example.myapplication.R;
 
 public class ProductDetailActivity extends AppCompatActivity {
-
+    private String title;
+    private String description;
+    private String price;
+    private int imageResId;
+    private String category;
+    private float rating;
+    private boolean available;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_product_details);
         // Get the product object passed from the previous activity
-        Product product = (Product) getIntent().getSerializableExtra("product");
+        Produit product = (Produit) getIntent().getSerializableExtra("product");
 
         // Find views to display the product details
         ImageView productImageView = findViewById(R.id.productImage);
@@ -43,4 +49,5 @@ public class ProductDetailActivity extends AppCompatActivity {
 
 
     }
+
 }

@@ -1,6 +1,6 @@
 plugins {
-    alias(libs.plugins.android.application)
-    alias(libs.plugins.google.gms.google.services)
+    id("com.android.application")
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -26,18 +26,19 @@ android {
             )
         }
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
+
     buildFeatures {
         viewBinding = true
     }
 }
 
 dependencies {
-    implementation ("com.google.firebase:firebase-database")
-    implementation(libs.appcompat)
+    implementation("androidx.appcompat:appcompat:1.6.1")
     implementation(libs.material)
     implementation(libs.activity)
     implementation(libs.constraintlayout)
@@ -50,4 +51,11 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
+
+    // Firebase Dependencies
+    implementation("com.google.firebase:firebase-auth:22.3.1") // Firebase Auth
+    implementation("com.google.firebase:firebase-database:20.3.0") // Firebase Database
+    implementation("com.google.firebase:firebase-functions:20.3.1") // Firebase Functions (version mise à jour)
+
+    implementation("androidx.cardview:cardview:1.0.0")
 }

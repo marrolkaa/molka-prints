@@ -13,7 +13,7 @@ import androidx.appcompat.widget.SearchView;
 import androidx.core.content.ContextCompat;
 
 import com.example.myapplication.CartManager;
-import com.example.myapplication.Product;
+import com.example.myapplication.Produit;
 import com.example.myapplication.R;
 import com.example.myapplication.ui.cart.CartActivity;
 
@@ -35,18 +35,19 @@ public class Ourproduct extends AppCompatActivity {
         SearchView searchView = findViewById(R.id.searchView);
         LinearLayout productListLayout = findViewById(R.id.productListLayout);
 
-        List<Product> products = new ArrayList<>();
-        products.add(new Product(R.drawable.m1, "20dt", "A beautiful custom notebook.", "A beautiful custom notebook", "Stationery", 4.5f, true));
-        products.add(new Product(R.drawable.st2, "50dt", "A sticky notes.", "A sticky notes", "Stationery", 4.0f, true));
-        products.add(new Product(R.drawable.mu3, "23dt", "A  study mug.", "A  study mug", "Stationery", 4.2f, true));
-        products.add(new Product(R.drawable.p4, "30dt", "A Poster.", "A Poster", "Stationery", 4.5f, true));
-        products.add(new Product(R.drawable.m6, "23dt", "A nails artist planner.", "A nails artist planner.", "Stationery", 4.2f, true));
-        products.add(new Product(R.drawable.s7, "24dt", "A heart sticker.", "A heart sticker", "Stationery", 4.5f, true));
-        products.add(new Product(R.drawable.m8, "28.5dt", "A wedding  planner.", "A wedding  planner", "Stationery", 4.0f, true));
-        products.add(new Product(R.drawable.m9, "34dt", "A small note book.", "A small note book", "Stationery", 4.2f, true));
-        products.add(new Product(R.drawable.m10, "10dt", "A planner.", "A planner", "Stationery", 4.5f, true));
-        products.add(new Product(R.drawable.m11, "40dt", "A planner.", "A planner", "Stationery", 4.0f, true));
-        products.add(new Product(R.drawable.m12, "41dt", "A  diary.", "A  diary.", "Stationery", 4.2f, true));
+        List<Produit> products = new ArrayList<>();
+        products.add(new Produit("A beautiful custom notebook", "A beautiful custom notebook.", "20dt", R.drawable.m1, "Stationery", 4.5f, true));
+        products.add(new Produit("A sticky notes", "A sticky notes.", "50dt", R.drawable.st2, "Stationery", 4.0f, true));
+        products.add(new Produit("A study mug", "A study mug.", "23dt", R.drawable.mu3, "Stationery", 4.2f, true));
+        products.add(new Produit("A Poster", "A Poster.", "30dt", R.drawable.p4, "Stationery", 4.5f, true));
+        products.add(new Produit("A nails artist planner", "A nails artist planner.", "23dt", R.drawable.m6, "Stationery", 4.2f, true));
+        products.add(new Produit("A heart sticker", "A heart sticker.", "24dt", R.drawable.s7, "Stationery", 4.5f, true));
+        products.add(new Produit("A wedding planner", "A wedding planner.", "28.5dt", R.drawable.m8, "Stationery", 4.0f, true));
+        products.add(new Produit("A small note book", "A small note book.", "34dt", R.drawable.m9, "Stationery", 4.2f, true));
+        products.add(new Produit("A planner", "A planner.", "10dt", R.drawable.m10, "Stationery", 4.5f, true));
+        products.add(new Produit("A planner", "A planner.", "40dt", R.drawable.m11, "Stationery", 4.0f, true));
+        products.add(new Produit("A diary", "A diary.", "41dt", R.drawable.m12, "Stationery", 4.2f, true));
+
 
         // 🔍 Recherche
 
@@ -96,7 +97,7 @@ public class Ourproduct extends AppCompatActivity {
         });
 
         // 🛍️ Affichage des produits
-        for (Product product : products) {
+        for (Produit product : products) {
             LinearLayout productItem = new LinearLayout(this);
             productItem.setOrientation(LinearLayout.VERTICAL);
             productItem.setPadding(16, 16, 16, 16);

@@ -1,31 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="#FFF0F5">
 
-    <LinearLayout
+
+    <!-- Titre du panier -->
+    <TextView
+        android:id="@+id/cartTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mon Panier"
+        android:textSize="28sp"
+        android:textColor="#FF69B4"
+        android:textStyle="bold"
+        android:layout_gravity="center_horizontal"
+        android:paddingBottom="16dp"/>
+
+    <!-- Liste des produits dans le panier -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewCart"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:paddingTop="16dp"
+        android:background="@android:color/white"
+        android:layout_marginBottom="16dp"
+        android:clipToPadding="false"/>
+
+    <TextView
+        android:id="@+id/panierVideText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="16dp">
+        android:text="Votre panier est vide."
+        android:textSize="18sp"
+        android:textAlignment="center"
+        android:visibility="gone"
+        android:padding="16dp" />
 
-        <!-- Cart item list -->
-        <LinearLayout
-            android:id="@+id/cartItemList"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" />
+    <!-- Total -->
+    <TextView
+        android:id="@+id/cartTotal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Total: 0.00 dt"
+        android:textSize="18sp"
+        android:textColor="#FF69B4"
+        android:gravity="center"
+        android:paddingBottom="16dp"/>
 
-        <!-- Total price display -->
-        <TextView
-            android:id="@+id/totalTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Total: 0.00 dt"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:layout_marginTop="16dp"
-            android:layout_gravity="end" /> <!-- Align the total to the right -->
-    </LinearLayout>
+    <!-- Bouton Passer à la commande -->
+    <Button
+        android:id="@+id/checkoutButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Passer la commande"
+        android:background="@drawable/button_background"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        android:layout_marginBottom="16dp" />
 
-</ScrollView>
+
+</LinearLayout>
