@@ -43,7 +43,7 @@ public class Posters extends AppCompatActivity {
 
         // Add cute animated message
         TextView infoText = new TextView(this);
-        infoText.setText("✨ all the poster are 5dt💖");
+        infoText.setText("✨ all the poster are 3dt💖");
         infoText.setTextSize(16);
         infoText.setTextColor(ContextCompat.getColor(this, R.color.pink));
         infoText.setTextAlignment(View.TEXT_ALIGNMENT_VIEW_START);
@@ -95,7 +95,10 @@ public class Posters extends AppCompatActivity {
                         intent = new Intent(Posters.this, Mug.class);
                         break;
                     case "posters":
-                        Toast.makeText(Posters.this, "DEJA DANS LA PAGE DE POSTERS : " + query, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Posters.this, "YOU ARE ALREADY IN  THE POSTERS PAGE : " + query, Toast.LENGTH_SHORT).show();
+                        break;
+                    case "poster":
+                        Toast.makeText(Posters.this, "YOU ARE ALREADY IN  THE POSTERS PAGE : " + query, Toast.LENGTH_SHORT).show();
                         break;
                     case "note books":
                         intent = new Intent(Posters.this, Notebook.class);
@@ -103,8 +106,11 @@ public class Posters extends AppCompatActivity {
                     case "daily planner":
                         intent = new Intent(Posters.this, Dailyplanner.class);
                         break;
+                    case "sticky notes":
+                        startActivity(new Intent(Posters.this, Stickynotes.class));
+                        break;
                     default:
-                        Toast.makeText(Posters.this, "Aucun produit trouvé pour : " + query, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Posters.this, "NO PRODUCT CALLED BY  : " + query, Toast.LENGTH_SHORT).show();
                         return true;
                 }
                 startActivity(intent);
@@ -139,15 +145,15 @@ public class Posters extends AppCompatActivity {
             titleView.setTextSize(18);
 
             TextView priceView = new TextView(this);
-            priceView.setText("Prix : " + product.getPrice());
+            priceView.setText("Price : " + product.getPrice());
 
             Button addToCartButton = new Button(this);
-            addToCartButton.setText("Ajouter au panier");
+            addToCartButton.setText("ADD TO CART");
             addToCartButton.setBackgroundColor(ContextCompat.getColor(this, R.color.pink));
             addToCartButton.setTextColor(Color.WHITE); // Pour que le texte soit bien visible
             addToCartButton.setOnClickListener(v -> {
                 CartManager.addToCart(product);
-                Toast.makeText(Posters.this, product.getTitle() + " ajouté au panier", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Posters.this, product.getTitle() + " ADDED TO CART", Toast.LENGTH_SHORT).show();
             });
 
             productItem.addView(imageView);

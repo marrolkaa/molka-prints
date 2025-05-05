@@ -65,3 +65,36 @@
 
 
 </LinearLayout>
+        <!-- Liste des produits -->
+        <LinearLayout
+            android:id="@+id/cartItemList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+
+        <!-- Total -->
+        <TextView
+            android:id="@+id/totalTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Total: 0.00 dt"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_marginTop="16dp"
+            android:layout_gravity="end" />
+
+        <!-- Bouton Finaliser -->
+        <Button
+            android:id="@+id/checkoutButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Finaliser la commande"
+            android:layout_marginTop="24dp"
+            android:padding="12dp"
+            android:background="@color/pink"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+</ScrollView>

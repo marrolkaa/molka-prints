@@ -16,8 +16,6 @@
         android:contentDescription="Logo de Molka Prints"
         android:src="@drawable/logo" />
 
-    <!-- Titre -->
-
     <!-- Nom -->
     <EditText
         android:id="@+id/nameInput"
@@ -118,5 +116,11 @@
         android:clickable="true"
         android:focusable="true" />
 
-
+    <!-- ProgressBar -->
+    <ProgressBar
+        android:id="@+id/loadingProgressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:layout_centerHorizontal="true" />
 </LinearLayout>

@@ -18,7 +18,6 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.example.myapplication.R;
 import com.example.myapplication.databinding.ActivityLoginBinding;
 import com.example.myapplication.ui.product.Ourproduct;
@@ -49,11 +48,6 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 loadingProgressBar.setVisibility(View.VISIBLE);
-                /*loginViewModel.login(
-                        usernameEditText.getText().toString(),
-                        passwordEditText.getText().toString()
-                );*/
-
                 String email = usernameEditText.getText().toString();
                 String password=passwordEditText.getText().toString();
                 DatabaseReference database = FirebaseDatabase.getInstance().getReference("users");

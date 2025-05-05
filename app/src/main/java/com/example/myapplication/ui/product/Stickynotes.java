@@ -2,12 +2,14 @@ package com.example.myapplication.ui.product;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
 import android.view.animation.ScaleAnimation;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -18,7 +20,10 @@ import androidx.appcompat.widget.SearchView;
 import androidx.core.content.ContextCompat;
 
 import com.example.myapplication.Produit;
+import com.example.myapplication.CartManager;
+import com.example.myapplication.Product;
 import com.example.myapplication.R;
+import com.example.myapplication.ui.cart.CartActivity;
 
 
 import java.util.ArrayList;
@@ -73,6 +78,16 @@ public class Stickynotes extends AppCompatActivity {
         products.add(new Produit("Sticky Note H", "Coffee Sticky Note", "2dt", R.drawable.st8, "Sticky Notes", 4.2f, false));
         products.add(new Produit("Sticky Note I", "Plant Sticky Note", "2dt", R.drawable.st10, "Sticky Notes", 4.5f, true));
 
+        List<Product> products = new ArrayList<>();
+        products.add(new Product(R.drawable.st1, "2dt", "Sticker A", "Cute Star Sticker", "Stickers", 4.5f, true));
+        products.add(new Product(R.drawable.st2, "2dt", "Sticker B", "Heart Sticker", "Stickers", 4.0f, true));
+        products.add(new Product(R.drawable.st3, "2dt", "Sticker C", "Animal Sticker", "Stickers", 4.2f, false));
+        products.add(new Product(R.drawable.st4, "2dt", "Sticker D", "Floral Sticker", "Stickers", 4.5f, true));
+        products.add(new Product(R.drawable.st5, "2dt", "Sticker E", "Rainbow Sticker", "Stickers", 4.2f, false));
+        products.add(new Product(R.drawable.st6, "2dt", "Sticker F", "Fruit Sticker", "Stickers", 4.5f, true));
+        products.add(new Product(R.drawable.st7, "2dt", "Sticker G", "Cloud Sticker", "Stickers", 4.0f, true));
+        products.add(new Product(R.drawable.st8, "2dt", "Sticker H", "Coffee Sticker", "Stickers", 4.2f, false));
+        products.add(new Product(R.drawable.st10, "2dt", "Sticker I", "Plant Sticker", "Stickers", 4.5f, true));
 
 
         // Search filter
@@ -88,6 +103,10 @@ public class Stickynotes extends AppCompatActivity {
                     case "flower bouquet":
                         intent = new Intent(Stickynotes.this, Flower.class);
                         break;
+                    case "sticky notes":
+                        Toast.makeText(Stickynotes.this, "You are already in the sticky notes  page : " + query, Toast.LENGTH_SHORT).show();
+
+                        break;
                     case "mug":
                         intent = new Intent(Stickynotes.this, Mug.class);
                         break;
@@ -102,7 +121,7 @@ public class Stickynotes extends AppCompatActivity {
                         intent = new Intent(Stickynotes.this, Dailyplanner.class);
                         break;
                     default:
-                        Toast.makeText(Stickynotes.this, "Aucun produit trouvé pour : " + query, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Stickynotes.this, "no product called by  : " + query, Toast.LENGTH_SHORT).show();
                         return true;
                 }
                 startActivity(intent);
@@ -114,9 +133,17 @@ public class Stickynotes extends AppCompatActivity {
                 return false;
             }
         });
+        // 🛒 Vers panier
+        ImageView cartImage = findViewById(R.id.cartImageView);
+        cartImage.setOnClickListener(v -> {
+            Intent intent = new Intent(Stickynotes.this, CartActivity.class);
+            startActivity(intent);
+        });
 
         // Display products dynamically
         for (Produit product : products) {
+        // Display products with "Ajouter au panier" button
+        for (Product product : products) {
             LinearLayout productItem = new LinearLayout(this);
             productItem.setOrientation(LinearLayout.VERTICAL);
             productItem.setPadding(16, 16, 16, 16);
@@ -128,7 +155,23 @@ public class Stickynotes extends AppCompatActivity {
             imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
             imageView.setImageResource(product.getImageResId());
 
+            TextView titleView = new TextView(this);
+            titleView.setText(product.getTitle());
+            titleView.setTextSize(18);
+
+            TextView priceView = new TextView(this);
+            priceView.setText("Price : " + product.getPrice());
+
+            Button addToCartButton = new Button(this);
+            addToCartButton.setText("ADD TO CART");
+            addToCartButton.setBackgroundColor(ContextCompat.getColor(this, R.color.pink));
+            addToCartButton.setTextColor(Color.WHITE); // Pour que le texte soit bien visible
+            addToCartButton.setOnClickListener(v -> {
+                CartManager.addToCart(product);
+                Toast.makeText(Stickynotes.this, product.getTitle() + " ADDED TO CART", Toast.LENGTH_SHORT).show();
+            });
             productItem.addView(imageView);
+            productItem.addView(addToCartButton);
             productListLayout.addView(productItem);
         }
     }

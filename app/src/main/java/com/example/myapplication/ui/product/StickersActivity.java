@@ -2,6 +2,7 @@ package com.example.myapplication.ui.product;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
@@ -77,6 +78,15 @@ public class StickersActivity extends AppCompatActivity {
         products.add(new Produit("Sticker I", "Plant Sticker", "1dt", R.drawable.m10, "Stickers", 4.5f, true));
         products.add(new Produit("Sticker J", "Ocean Sticker", "1dt", R.drawable.m11, "Stickers", 4.0f, true));
         products.add(new Produit("Sticker K", "Book Sticker", "1dt", R.drawable.m12, "Stickers", 4.2f, false));
+        List<Product> products = new ArrayList<>();
+        products.add(new Product(R.drawable.s1, "1dt", "Sticker A", "coffee girlie sticker", "Stickers", 4.5f, true));
+        products.add(new Product(R.drawable.s2, "1dt", "Sticker B", "professional coffee drinker", "Stickers", 4.0f, true));
+        products.add(new Product(R.drawable.s3, "1dt", "Sticker C", "flpwer Sticker", "Stickers", 4.2f, false));
+        products.add(new Product(R.drawable.s4, "1dt", "Sticker D", "Floral Sticker", "Stickers", 4.5f, true));
+        products.add(new Product(R.drawable.s5, "1dt", "Sticker E", "flower Sticker", "Stickers", 4.2f, false));
+        products.add(new Product(R.drawable.s6, "1dt", "Sticker F", "butterfly Sticker", "Stickers", 4.5f, true));
+        products.add(new Product(R.drawable.s7, "1dt", "Sticker G", "heart  Sticker", "Stickers", 4.0f, true));
+        products.add(new Product(R.drawable.s8, "1dt", "Sticker H", "hearts Sticker", "Stickers", 4.2f, false));
 
         // Search filter
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -86,7 +96,7 @@ public class StickersActivity extends AppCompatActivity {
                 switch (query.toLowerCase()) {
                     case "stickers":
                     case "sticker":
-                        intent = new Intent(StickersActivity.this, StickersActivity.class);
+                        Toast.makeText(StickersActivity.this, "you are already in the stickers page : " + query, Toast.LENGTH_SHORT).show();
                         break;
                     case "flower bouquet":
                         intent = new Intent(StickersActivity.this, Flower.class);
@@ -98,6 +108,9 @@ public class StickersActivity extends AppCompatActivity {
                     case "poster":
                         intent = new Intent(StickersActivity.this, Posters.class);
                         break;
+                    case "sticky notes":
+                        startActivity(new Intent(StickersActivity.this, Stickynotes.class));
+                        break;
                     case "note books":
                         intent = new Intent(StickersActivity.this, Notebook.class);
                         break;
@@ -105,7 +118,7 @@ public class StickersActivity extends AppCompatActivity {
                         intent = new Intent(StickersActivity.this, Dailyplanner.class);
                         break;
                     default:
-                        Toast.makeText(StickersActivity.this, "Aucun produit trouvé pour : " + query, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(StickersActivity.this, "no product called by  : " + query, Toast.LENGTH_SHORT).show();
                         return true;
                 }
                 startActivity(intent);
@@ -143,13 +156,15 @@ public class StickersActivity extends AppCompatActivity {
             titleView.setTextSize(18);
 
             TextView priceView = new TextView(this);
-            priceView.setText("Prix : " + product.getPrice());
+            priceView.setText("Price : " + product.getPrice());
 
             Button addToCartButton = new Button(this);
-            addToCartButton.setText("Ajouter au panier");
+            addToCartButton.setText("ADD TO CART");
+            addToCartButton.setBackgroundColor(ContextCompat.getColor(this, R.color.pink));
+            addToCartButton.setTextColor(Color.WHITE); // Pour que le texte soit bien visible
             addToCartButton.setOnClickListener(v -> {
                 CartManager.addToCart(product);
-                Toast.makeText(StickersActivity.this, product.getTitle() + " ajouté au panier", Toast.LENGTH_SHORT).show();
+                Toast.makeText(StickersActivity.this, product.getTitle() + " ADDED TO CART", Toast.LENGTH_SHORT).show();
             });
             productItem.addView(imageView);
             productItem.addView(titleView);
